@@ -9,14 +9,21 @@ struct Stack<T>{
 	var count:Int { data.count }
 	
 	mutating func push(_ value:T){
-		data.insert(value, at: 0)
+		//data.insert(value, at: 0)
+		
+		//2nd way
+		data.append(value)
 	}
 	
 	mutating func pop() -> T?{
+		/*
 		defer {
 			if data.indices.contains(0){ data.remove(at: 0) }
 		}
 		return data.first
+		*/
+		//2nd way
+		return data.popLast()
 	}
 }
 
