@@ -6,5 +6,6 @@
         <page name='Linked List'/>
         <page name='Stack'/>
         <page name='Queues'/>
+        <page name='BinarySearch'/>
     </pages>
 </playground>
