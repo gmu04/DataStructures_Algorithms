@@ -25,6 +25,10 @@ struct Stack<T>{
 		//2nd way
 		return data.popLast()
 	}
+	
+	//
+	var peek:T?{ data.first }
+	
 }
 
 var stack = Stack<Int>()

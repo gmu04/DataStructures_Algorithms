@@ -13,7 +13,7 @@ struct Queue<T>{
 	}
 	
 	mutating func dequeue() -> T?{
-		return data.indices.contains(0) ? data.remove(at: 0) : nil
+		return data.isEmpty ? nil : data.remove(at: 0)
 	}
 }
 
