@@ -17,13 +17,13 @@ struct Queue<T>{
 	}
 }
 
-var stack = Queue<Int>()
-stack.enqueue(1);stack.enqueue(22);stack.enqueue(11);stack.enqueue(37); print(stack.data, ", item count: \(stack.count)")
-print(stack.dequeue(), stack.data)
-print(stack.dequeue(), stack.data)
-print(stack.dequeue(), stack.data)
-print(stack.dequeue(), stack.data)
-print(stack.dequeue(), stack.data)
+var queue = Queue<Int>()
+queue.enqueue(1);queue.enqueue(22);queue.enqueue(11);queue.enqueue(37); print(queue.data, ", item count: \(queue.count)")
+print(queue.dequeue(), queue.data)
+print(queue.dequeue(), queue.data)
+print(queue.dequeue(), queue.data)
+print(queue.dequeue(), queue.data)
+print(queue.dequeue(), queue.data)
 
 
 
