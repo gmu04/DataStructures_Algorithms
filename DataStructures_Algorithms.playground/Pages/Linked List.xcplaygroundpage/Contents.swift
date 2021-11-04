@@ -1,60 +1,25 @@
 //: [Previous](@previous)
 import Foundation
 
-class Node<T>:CustomStringConvertible{
-	private(set) var value:T
-	var next:Node?
-	
-	init(_ value:T, _ next:Node? = nil){
-		self.value = value
-		self.next = next
-	}
-}
-extension Node{
-	var description: String{
-				
-		guard let next = next else {
-			return "\(value) ⇢ ⊙"
-		}
-		return "\(value) ⇢ \(next.description) "
-	}
-}
 
-struct LinkedList<T>:CustomStringConvertible{
-	private(set) var head:Node<T>?
-	private(set) var tail:Node<T>?
-	
-	//MARK: - Properties
-	
-	var description: String{ isEmpty ? "* Empty list" :
+extension LinkedList:CustomStringConvertible{
+	public var description: String{ isEmpty ? "* Empty list" :
 		"\(head!)\t(\(String(describing: head?.value)),\(String(describing: tail?.value)))" }
+}
+
+public struct LinkedList<T>{
+	public private(set) var head:Node<T>?
+	public private(set) var tail:Node<T>?
 	var isEmpty:Bool{ head == nil }
-	
-	
-	//MARK: - node(at:)
 
-	func node(at index:Int) -> Node<T>?{
-		var node:Node<T>? = head
-		var tmpIdx = 0 // headIndex
-		while node != nil {
-			if tmpIdx == index {
-				return node
-			}
-			node = node?.next
-			tmpIdx += 1
-		}
-		return nil
-	}
-
-	//MARK: - push(_:)
 	
+	//MARK: - push
 	mutating func push(_ value:T){
 		head = Node(value, head)
 		if tail == nil { tail = head }
 	}
 	
-	//MARK: - append(_:)
-	
+	//MARK: - append
 	mutating func append(_ value:T){
 		let n = Node(value)
 		if tail == nil { head = n; tail = n }
@@ -64,8 +29,7 @@ struct LinkedList<T>:CustomStringConvertible{
 		}
 	}
 
-	//MARK: - insert(_:afterIndex:)
-	
+	//MARK: - insert
 	mutating func insert(_ value:T, afterIndex idx:Int){
 		if let nodeAtIndex = node(at: idx){
 			nodeAtIndex.next = Node(value, nodeAtIndex.next)
@@ -75,8 +39,7 @@ struct LinkedList<T>:CustomStringConvertible{
 		}
 	}
 	
-	//MARK: - pop()
-	
+	//MARK: - pop
 	mutating func pop() -> T?{
 		defer {
 			head = head?.next
@@ -87,8 +50,7 @@ struct LinkedList<T>:CustomStringConvertible{
 		return head?.value
 	}
 	
-	//MARK: - removeLast()
-	
+	//MARK: - removeLast
 	mutating func removeLast() -> T?{
 		//empty
 		guard let head = head else { return nil	}
@@ -128,7 +90,22 @@ struct LinkedList<T>:CustomStringConvertible{
 		}
 		return node.next?.value
 	}
+
 	
+	//MARK: - node(at:)
+	func node(at index:Int) -> Node<T>?{
+		var node:Node<T>? = head
+		var tmpIdx = 0 // headIndex
+		while node != nil {
+			if tmpIdx == index {
+				return node
+			}
+			node = node?.next
+			tmpIdx += 1
+		}
+		return nil
+	}
+
 }
 
 
